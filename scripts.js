@@ -56,11 +56,11 @@ for(let i = 0; i < students.length; i++){
     tr.appendChild(tdName);
 
     let tdEstimate = document.createElement("td");
-    tdName.innerHTML = students[i].estimate;
+    tdEstimate.innerHTML = students[i].estimate;
     tr.appendChild(tdEstimate);
 
     let tdCourse = document.createElement("td");
-    tdName.innerHTML = students[i].course;
+    tdCourse.innerHTML = students[i].course;
     tr.appendChild(tdCourse);
 
     let input = document.createElement("input");
@@ -73,5 +73,7 @@ for(let i = 0; i < students.length; i++){
     });
 
     table.appendChild(tr);
+
+
 
 }
