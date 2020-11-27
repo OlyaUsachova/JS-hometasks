@@ -77,6 +77,7 @@ function renderAddStudent(){
 
         let inputCheckActive = document.createElement("input");
         let label = document.createElement("label");
+        label.className = "label_style";
 
         inputCheckActive.type = "checkbox";
         inputCheckActive.id = "active";  // + students[i].id;
@@ -88,7 +89,8 @@ function renderAddStudent(){
         let buttonAdd = document.createElement("button");
         buttonAdd.type = "button";
         buttonAdd.id = "add";
-        buttonAdd.innerHTML = "добавить";
+        buttonAdd.innerHTML = "Добавить";
+        buttonAdd.className = "b_style";
         buttonAdd.addEventListener("click", event => {
 
         });
