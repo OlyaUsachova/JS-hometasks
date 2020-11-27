@@ -60,18 +60,20 @@ function renderAddStudent(){
         inputNameStudent.type = "text";
         inputNameStudent.placeholder = "Имя студента";
         inputNameStudent.name = "name_student";
+        inputNameStudent.className = "input-style";
 
 
         let inputCourse = document.createElement("input");
         inputCourse.type = "number";
         inputCourse.placeholder = "Курс";
         inputCourse.name = "course";
+        inputCourse.className = "input-style";
 
 
         let inputEstimate = document.createElement("input");
         inputEstimate.type = "number";
         inputEstimate.placeholder = "Оценка";
-        inputEstimate.name = "estimate";
+        inputEstimate.className = "input-style";
 
         let inputCheckActive = document.createElement("input");
         let label = document.createElement("label");
@@ -84,7 +86,11 @@ function renderAddStudent(){
         label.innerHTML = "Активность";
 
         let buttonAdd = document.createElement("button");
+        buttonAdd.type = "button";
+        buttonAdd.id = "add";
+        buttonAdd.addEventListener("click", event => {
 
+        });
 
 
         form.appendChild(inputNameStudent);

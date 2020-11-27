@@ -8,3 +8,19 @@
     font-size: 16px;
     color: black;
 }
+
+.input-style{
+    margin: 3px 15px;
+    padding: 5px 5px;
+    border-radius: 0;
+    border: 2px solid black;
+}
+
+table{
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+.td_style{
+    border: 1px solid black;
+}
