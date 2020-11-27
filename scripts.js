@@ -88,6 +88,7 @@ function renderAddStudent(){
         let buttonAdd = document.createElement("button");
         buttonAdd.type = "button";
         buttonAdd.id = "add";
+        buttonAdd.innerHTML = "добавить";
         buttonAdd.addEventListener("click", event => {
 
         });
@@ -112,18 +113,22 @@ function renderStudents() {
         let tr = document.createElement("tr");
         let tdName = document.createElement("td");
         tdName.innerHTML = students[i].name;
+        tdName.className = "td_style";
         tr.appendChild(tdName);
 
         let tdEstimate = document.createElement("td");
         tdEstimate.innerHTML = students[i].estimate;
+        tdEstimate.className = "td_style";
         tr.appendChild(tdEstimate);
 
         let tdCourse = document.createElement("td");
         tdCourse.innerHTML = students[i].course;
+        tdCourse.className = "td_style";
         tr.appendChild(tdCourse);
 
         let input = document.createElement("input");
         input.type = "checkbox";
+        input.className = "check_style";
         input.setAttribute("checked", "checked");
         tr.appendChild(input);
 
