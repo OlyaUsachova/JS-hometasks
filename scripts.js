@@ -15,30 +15,35 @@ console.log(p[0].innerHTML);
 
 let students = [
     {
+        id: 1,
         name: "Ivan",
         estimate: 3,
         course: 1,
         active: true,
     },
     {
+        id: 2,
         name: "Nikita",
         estimate: 2,
         course: 4,
         active: false,
     },
     {
+        id: 3,
         name: "Alex",
         estimate: 5,
         course: 2,
         active: true,
     },
     {
+        id: 4,
         name: "Michael",
         estimate: 4,
         course: 3,
         active: false,
     },
     {
+        id: 5,
         name: "Vlad",
         estimate: 3,
         course: 5,
@@ -47,33 +52,87 @@ let students = [
 ];
 
 
+let form = document.querySelector("form");
+
+function renderAddStudent(){
+    // for (let i = 0; i < students.length; i++){
+        let inputNameStudent = document.createElement("input");
+        inputNameStudent.type = "text";
+        inputNameStudent.placeholder = "Имя студента";
+        inputNameStudent.name = "name_student";
+
+
+        let inputCourse = document.createElement("input");
+        inputCourse.type = "number";
+        inputCourse.placeholder = "Курс";
+        inputCourse.name = "course";
+
+
+        let inputEstimate = document.createElement("input");
+        inputEstimate.type = "number";
+        inputEstimate.placeholder = "Оценка";
+        inputEstimate.name = "estimate";
+
+        let inputCheckActive = document.createElement("input");
+        let label = document.createElement("label");
+
+        inputCheckActive.type = "checkbox";
+        inputCheckActive.id = "active";  // + students[i].id;
+        inputCheckActive.name = "active"; // + students[i].id;
+        // inputCheckActive.value = students[i].id;
+        label.setAttribute("for", "active"); // + students[i].id);
+        label.innerHTML = "Активность";
+
+        let buttonAdd = document.createElement("button");
+
+
+
+        form.appendChild(inputNameStudent);
+        form.appendChild(inputCourse);
+        form.appendChild(inputEstimate);
+        form.appendChild(inputCheckActive);
+        form.appendChild(label);
+        form.appendChild(buttonAdd);
+    // }
+}
+
+renderAddStudent();
+
 let table = document.querySelector("table tbody");
 
-for(let i = 0; i < students.length; i++){
-    let tr = document.createElement("tr");
-    let tdName = document.createElement("td");
-    tdName.innerHTML = students[i].name;
-    tr.appendChild(tdName);
+function renderStudents() {
+    for(let i = 0; i < students.length; i++){
 
-    let tdEstimate = document.createElement("td");
-    tdEstimate.innerHTML = students[i].estimate;
-    tr.appendChild(tdEstimate);
+        let tr = document.createElement("tr");
+        let tdName = document.createElement("td");
+        tdName.innerHTML = students[i].name;
+        tr.appendChild(tdName);
 
-    let tdCourse = document.createElement("td");
-    tdCourse.innerHTML = students[i].course;
-    tr.appendChild(tdCourse);
+        let tdEstimate = document.createElement("td");
+        tdEstimate.innerHTML = students[i].estimate;
+        tr.appendChild(tdEstimate);
 
-    let input = document.createElement("input");
-    input.type = "checkbox";
-    input.setAttribute("checked", "checked");
-    tr.appendChild(input);
+        let tdCourse = document.createElement("td");
+        tdCourse.innerHTML = students[i].course;
+        tr.appendChild(tdCourse);
 
-    input.addEventListener("click", function (event) {
-        tr.innerHTML = " ";
-    });
+        let input = document.createElement("input");
+        input.type = "checkbox";
+        input.setAttribute("checked", "checked");
+        tr.appendChild(input);
 
-    table.appendChild(tr);
+        input.addEventListener("click", function (event) {
+            tr.innerHTML = " ";
+            students.splice(i, 1);
+            /* for (let j = students.length-1; ;){
+                    alert("Cтуденты не найдены");     // при удалении последнего студента вывести студенты не найдены
+            }
+             */
+        });
 
+        table.appendChild(tr);
 
-
+    }
 }
+
+renderStudents();
