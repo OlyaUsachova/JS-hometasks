@@ -52,7 +52,7 @@ let students = [
 ];
 
 
-let form = document.querySelector("form");
+let form_ = document.querySelector("form");
 
 function renderAddStudent(){
     // for (let i = 0; i < students.length; i++){
@@ -74,6 +74,7 @@ function renderAddStudent(){
         inputEstimate.type = "number";
         inputEstimate.placeholder = "Оценка";
         inputEstimate.className = "input-style";
+        inputEstimate.name = "estimate";
 
         let inputCheckActive = document.createElement("input");
         let label = document.createElement("label");
@@ -87,21 +88,35 @@ function renderAddStudent(){
         label.innerHTML = "Активность";
 
         let buttonAdd = document.createElement("button");
-        buttonAdd.type = "button";
+        buttonAdd.type = "submit";
         buttonAdd.id = "add";
         buttonAdd.innerHTML = "Добавить";
         buttonAdd.className = "b_style";
         buttonAdd.addEventListener("click", event => {
+            let data = new FormData(event.target.closest("form"));
 
+            //let nameStudent = data.get("name_student");
+            //let course = data.get("course");
+            // let estimate_ = data.get("estimate");
+
+            let student = {
+                name: data.get("name_student"),
+                estimate: data.get("estimate"),
+                course: data.get("course"),
+            };
+
+            students.push(student);
+
+            console.log(student);
         });
 
 
-        form.appendChild(inputNameStudent);
-        form.appendChild(inputCourse);
-        form.appendChild(inputEstimate);
-        form.appendChild(inputCheckActive);
-        form.appendChild(label);
-        form.appendChild(buttonAdd);
+        form_.appendChild(inputNameStudent);
+        form_.appendChild(inputCourse);
+        form_.appendChild(inputEstimate);
+        form_.appendChild(inputCheckActive);
+        form_.appendChild(label);
+        form_.appendChild(buttonAdd);
     // }
 }
 
@@ -133,19 +148,23 @@ function renderStudents() {
         input.className = "check_style";
         input.setAttribute("checked", "checked");
         tr.appendChild(input);
+        (function (i) {
+            input.addEventListener("click", function (event) {
+                tr.innerHTML = " ";
+                students.splice(i, 1);
 
-        input.addEventListener("click", function (event) {
-            tr.innerHTML = " ";
-            students.splice(i, 1);
-            /* for (let j = students.length-1; ;){
+            });
+        }) (i);
+
+        table.appendChild(tr);
+
+        /* for (let j = students.length-1; ;){
                     alert("Cтуденты не найдены");     // при удалении последнего студента вывести студенты не найдены
             }
              */
-        });
-
-        table.appendChild(tr);
 
     }
 }
 
 renderStudents();
+
